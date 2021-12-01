@@ -5,18 +5,22 @@
   * 고객의 특성을 나타내는 Data
   * SIU_CUST_YN 이라는 최종 보험사기 구분 Factor 포함
   *  고객의 성/연령/거주지/직업/배우자/소득 및 신용등급 정보 등 포함
+  
 * BGCON_CNTT_DATA
   * 고객들의 계약 속성을 나타내는 Data
   *  고객과 연관된 계약들의 상품종류 및 상태변화 및 보험료 수준 등
   *   고객테이블과 CUST_ID 값을 Key값으로 하여 Join 가능
+  
 * BGCON_CLAIM_DATA 
   * 고객들을 대상으로 한 지급 속성을 나타내는 Data
   * 언제 / 어떠한 사유로 / 얼마의 보험금이 지급 되었는지에 대한 정보를 포함함
   * CNTT_DATA와 POLY_NO값을 Key로 하여 JOIN 가능
+ 
 * BGCON_FMLY_DATA
   *  고객간 가족여부를 알 수 있는 Data
   *  보험사기의 경우 다수가 연계하여 발생하는 경우가 많으므로 Network 분석 등으로 접근하는
      참가자를 위하여 해당 정보를 제공
+     
 * BGCON_FPINFO_DATA
  * 보험설계사 정보. 보험설계사의 재직기간 등을 알 수 있는 Data
  * 고객대비 보험에 대한 이해도가 높음. Network 분석을 위한 Data
