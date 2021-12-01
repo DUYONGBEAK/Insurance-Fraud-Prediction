@@ -1,51 +1,67 @@
 # Insurance-fraud-detection-model
 
 ## 2016빅콘테스트 한화생명 데이터로 보험사기자 예측 프로젝트
+* BGCON_CUST_DATA 
+  * 고객의 특성을 나타내는 Data
+  * SIU_CUST_YN 이라는 최종 보험사기 구분 Factor 포함
+  *  고객의 성/연령/거주지/직업/배우자/소득 및 신용등급 정보 등 포함
+* BGCON_CNTT_DATA
+  * 고객들의 계약 속성을 나타내는 Data
+  *  고객과 연관된 계약들의 상품종류 및 상태변화 및 보험료 수준 등
+  *   고객테이블과 CUST_ID 값을 Key값으로 하여 Join 가능
+* BGCON_CLAIM_DATA 
+  * 고객들을 대상으로 한 지급 속성을 나타내는 Data
+  * 언제 / 어떠한 사유로 / 얼마의 보험금이 지급 되었는지에 대한 정보를 포함함
+  * CNTT_DATA와 POLY_NO값을 Key로 하여 JOIN 가능
+* BGCON_FMLY_DATA
+  *  고객간 가족여부를 알 수 있는 Data
+  *  보험사기의 경우 다수가 연계하여 발생하는 경우가 많으므로 Network 분석 등으로 접근하는
+     참가자를 위하여 해당 정보를 제공
+* BGCON_FPINFO_DATA
+ * 보험설계사 정보. 보험설계사의 재직기간 등을 알 수 있는 Data
+ * 고객대비 보험에 대한 이해도가 높음. Network 분석을 위한 Data
 
-<a href="https://bit.ly/inflearn-public-data-eda"><img src="https://cdn.inflearn.com/public/courses/286688/course_cover/b08e32cb-597e-4af8-9f13-fd4b0562e4fb/pje-public-data-analysis-eng-2.png" width=242></a>
 
-## 데이터셋 다운로드
-* http://bit.ly/open-data-set-folder
-
-## 01 신규 민간 아파트 분양가 분석
-* 실습파일 : 01-apt-price-input.ipynb 결과를 직접 입력해 보시면서 실습할 수 있는 자료 입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-01-apt-price-input)
-
-* 결과파일 : 01-apt-price-output.ipynb 결과가 모두 입력된 자료입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-01-apt-output)
+## 01 Data Preprocessing
+* 결측값은 각 컬럼 특성에 맞게 제거
+* CUST_ID를 index로 사용하기 위해 BGCON_CUST_DATA를 기준으로 파생변수 생성
   
   
-## 02 상가(상권)정보로 기술통계 기초 익히기
-
-* 실습파일 : 02-store-eda-input.ipynb 결과를 직접 입력해 보시면서 실습할 수 있는 자료 입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-02-store-input)
-
-* 결과파일 : 02-store-eda-output.ipynb 결과가 모두 입력된 자료입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-02-store-output)
+## 02 Data Join
+* Join된 Data의 고객 수는 20606명, 보험사기자는 1806명으로 약 8.76%이다.
  
  
- ## 03 프랜차이즈 입점 분석
+## 03 Train Data와 Test Data로 분리
+* Train Data와 Test Data를 9대1로 분리함.
+* 비식별화 컬럼은 삭제
+* 고유 값이 많은 컬럼들을 확인한 뒤, 인코딩에 부담을 줄이는 선에서 적절히 삭제
+* 피어슨 상관계수를 활용하여 변수간 상관관계를 분석하여 연관성이 큰 변수 삭제 
  
-* 실습파일 : 03-franchise-eda-input.ipynb 결과를 직접 입력해 보시면서 실습할 수 있는 자료 입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-03-franchise-input)
-
-* 결과파일 : 03-franchise-eda-output.ipynb 결과가 모두 입력된 자료입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-03-franchise-output)
  
- 
- ## 04 스타벅스, 이디야 매장위치 비교하기
-  
- * 실습파일 : 04-coffee-store-input.ipynb 결과를 직접 입력해 보시면서 실습할 수 있는 자료 입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-04-coffee-store-input)
-
-* 결과파일 : 04-coffee-store-output.ipynb 결과가 모두 입력된 자료입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-04-coffee-store-output)
+## 04 XGBoost를 활용한 feature importance 확인
+* Normalization과 One-Hot Encoding을 진행
+* Train Data를 XGBoost model에 적용하여 feature importance가 높은 것만 추출
 
 
- ## 05 도시공원 표준 데이터로 데이터 전처리 익히기
-  
-* 실습파일 : 05-park-input.ipynb 결과를 직접 입력해 보시면서 실습할 수 있는 자료 입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-05-park-input)
-* 결과파일 : 05-park-output.ipynb 결과가 모두 입력된 자료입니다. [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://bit.ly/open-data-05-park-output)
-* [* 판다스 프로파일링으로 기술통계 한번에 보기](https://corazzon.github.io/open-data-analysis-basic/05-park_pandas_profile.html)
+## 05 K-Means를 이용한 clustering
+* 보험사기자와 보험사기자가 아닌 고객들의 특성을 파악하기 위하여 군집분석 진행
+* 보험사기자가 5%미만인 군집 10개와 15%를 초과하는 군집 6개를 추출
+* 16개 군집들의 특성 분석
 
+## 06 clustering된 Data들을 기준으로 Train Data 완성 
+* 군집들의 인덱스를 이용해서 10009명의 최종 Train Data 완성
+* Data의 label imbalance를 조정하기 위해 ADASYN를 사용해서 해소
+
+## 07 보험사기자 예측을 위한 Classification Model생성
+* hyperparameter tuning으로 최적의 parameter 적용
+* RandomForest로 약 recall_score기 50.2%의 model 생성
+* DecisionTree로 약 recall_score기 64.3%의 model 생성
+
+## 08 DecisionTree를 Graphviz통해 시각화
+* 생성한 분류모델이 05번에서 분석한 군집들의 특성을 바탕으로 의사결정을 내린다는 것을 확인함
 
 ## License
 
 ### Code
-The code in this repository, including all code samples in the notebooks listed above, is released under the MIT license. Read more at the [Open Source Initiative](https://opensource.org/licenses/MIT).
 
 ### Text
-The text content of the book is released under the [CC-BY-NC-ND license](https://ko.wikipedia.org/wiki/%ED%81%AC%EB%A6%AC%EC%97%90%EC%9D%B4%ED%8B%B0%EB%B8%8C_%EC%BB%A4%EB%A8%BC%EC%A6%88_%EB%9D%BC%EC%9D%B4%EC%84%A0%EC%8A%A4). Read more at [Creative Commons](https://creativecommons.org/licenses/by-nc-nd/3.0/us/legalcode).
-
