@@ -58,8 +58,8 @@
 
 ## 07 보험사기자 예측을 위한 Classification Model생성
 * hyperparameter tuning으로 최적의 parameter 적용
-* RandomForest로 약 recall_score기 50.2%의 model 생성
-* DecisionTree로 약 recall_score기 64.3%의 model 생성
+* RandomForest로 약 recall_score가 50.2%의 model 생성
+* DecisionTree로 약 recall_score 64.3%의 model 생성
 
 ## 08 DecisionTree를 Graphviz통해 시각화
 * 생성한 분류모델이 05번에서 분석한 군집들의 특성을 바탕으로 의사결정을 내린다는 것을 확인함
