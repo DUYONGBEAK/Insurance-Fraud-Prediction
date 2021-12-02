@@ -1,4 +1,8 @@
-# Insurance-fraud-detection-model
+---
+title: "보험 사기 예측"
+author: "baekduyong"
+date: "2021년 11월"
+---
 
 ## 2016빅콘테스트 한화생명 데이터로 보험사기자 예측 프로젝트
 * BGCON_CUST_DATA 
