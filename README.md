@@ -26,8 +26,8 @@ date: "2021년 11월"
      참가자를 위하여 해당 정보를 제공
      
 * BGCON_FPINFO_DATA
- * 보험설계사 정보. 보험설계사의 재직기간 등을 알 수 있는 Data
- * 고객대비 보험에 대한 이해도가 높음. Network 분석을 위한 Data
+  * 보험설계사 정보. 보험설계사의 재직기간 등을 알 수 있는 Data
+  * 고객대비 보험에 대한 이해도가 높음. Network 분석을 위한 Data
 
 
 ## 01 Data Preprocessing
